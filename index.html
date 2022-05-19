@@ -208,11 +208,18 @@
         </div>
         <form action="" id="messageForm">
           <div class="row">
-            <input type="text" placeholder=" Name" class="half" id="username" required />
-            <input type="email" placeholder=" Email" class="half" id="email" required />
+            <div class="half">
+              <input type="text" placeholder=" Name" id="username" />
+              <div class="error"></div>
+            </div>
+            <div class="half">
+              <input type="email" placeholder=" Email" id="email" />
+              <div class="error"></div>
+            </div>
           </div>
-          <textarea name="message" id="message" rows="5" class="textarea" placeholder="  Write your message here ....."
-            required></textarea>
+          <textarea name="message" id="message" rows="5" class="textarea"
+            placeholder="  Write your message here ....."></textarea>
+          <div class="error"></div>
           <input type="submit" class="submit-btn" value="SEND MESSAGE" />
         </form>
         <div class="follow">
@@ -287,67 +294,6 @@
     <div class="copyright">copy right &copy; 2020 by Alain Tresor U</div>
   </footer>
   <script src="javascript.js"></script>
-  <script>
-    const getArticleOnIndex = () => {
-      const articles = JSON.parse(localStorage.getItem("articles"));
-      let dataToDisplay = ``;
-      articles.forEach(element => {
-        dataToDisplay += `<div class="blog-item">
-          <a href="./blog.html" onclick="readMore('${element.id}')">
-            <img id="img" src="data:image/png;base64,${element.image}" alt="" />
-            <div class="content">
-              <div class="row-start">
-                <div class="date">
-                  <img src="images/fontisto_date.svg" alt="" /> ${element.postedDate}
-                </div>
-                <div class="comment">
-                  <img src="images/fa_comment-o.png" alt="" /> ${element.comments.length} Comments
-                </div>
-              </div>
-              <h3>${element.title}</h3>
-              <p>
-                
-              </p>
-            </div>
-          </a>
-        </div>`
-      })
-      document.getElementById('articles').innerHTML = dataToDisplay
-    }
-    getArticleOnIndex()
-    const readMore = article => {
-      localStorage.setItem('articleToRead', article);
-      // console.log(article)
-    }
-
-    // to send user message 
-    const sendMessage = e => {
-      e.preventDefault()
-      const messages = JSON.parse(localStorage.getItem('messages')) || [];
-      const username = document.getElementById('username').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      var today = new Date();
-      var dd = String(today.getDate()).padStart(2, "0");
-      var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-      var yyyy = today.getFullYear();
-
-      postedDate = dd + "/" + mm + "/" + yyyy;
-
-      const newMessage = {
-        id: Math.floor(Math.random() * 1000000),
-        username,
-        email,
-        message,
-        postedDate
-      }
-      messages.push(newMessage)
-      localStorage.setItem('messages', JSON.stringify(messages));
-      alert("Thank you for Your Message")
-      document.getElementById('messageForm').reset()
-    }
-    document.getElementById('messageForm').addEventListener('submit', sendMessage)
-  </script>
 </body>
 
 </html>
