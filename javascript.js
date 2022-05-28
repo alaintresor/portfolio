@@ -78,8 +78,29 @@ form.addEventListener("submit", (e) => {
   validate(email, 1, "Please enter your email address");
   validate(userMsg, 2, "Message cannot be blank");
 });
-
+var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 let validate = (id, serial, message) => {
+ 
+  if(id.id==="email")
+  {
+if(id.value.trim()==="")
+{
+  errorMsg[serial].innerHTML = message;
+    id.style.border = "2px solid red";
+}
+else if(id.value.match(validRegex))
+{
+errorMsg[serial].innerHTML="Invalid Email Address";
+id.style.border = "2px solid red";
+}
+else
+{
+  errorMsg[serial].innerHTML = "";
+    id.style.border = "2px solid green";
+}
+  }
+  else
+  {
   if (id.value.trim() === "") {
     errorMsg[serial].innerHTML = message;
     id.style.border = "2px solid red";
@@ -87,5 +108,6 @@ let validate = (id, serial, message) => {
     errorMsg[serial].innerHTML = "";
     id.style.border = "2px solid green";
   }
+}
 };
 
