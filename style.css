@@ -177,13 +177,16 @@ a {
 /* about section  */
 .about {
   padding: 40px 0;
+  width: 100%;
 }
 .about .image-section img {
  margin-top: 120px;
+ /* width: 50%; */
 }
 .about .text-section {
   margin-top: 50px;
   margin-left: 50px;
+  width: 50%;
 }
 
 .about .text-section .titles button {
@@ -603,6 +606,7 @@ footer .contact img {
   .about .text-section {
     margin-top: 20px;
     margin-left: 0;
+    width: 100%;
   }
   .about .image-section img {
     margin: 0;
