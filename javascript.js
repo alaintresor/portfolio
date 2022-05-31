@@ -88,7 +88,7 @@ if(id.value.trim()==="")
   errorMsg[serial].innerHTML = message;
     id.style.border = "2px solid red";
 }
-else if(id.value.match(validRegex))
+else if(!id.value.match(validRegex))
 {
 errorMsg[serial].innerHTML="Invalid Email Address";
 id.style.border = "2px solid red";
